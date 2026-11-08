@@ -1,0 +1,29 @@
+#pytest --browser chromium   --html=artifacts/report.html   --self-contained-html   --junitxml=artifacts/junit.xml
+#!/bin/bash
+
+if [ "$1" == "1" ]; then
+    echo "Running tests in HEADED mode..."
+
+    pytest --base-url=https://www.saucedemo.com --browser chromium --headed --slowmo 700 \
+    --html=artifacts/report.html \
+    --self-contained-html \
+    --junitxml=artifacts/junit.xml \
+    -v -s --log-cli-level=INFO
+
+elif [ "$1" == "2" ]; then
+    echo "Running tests in HEADLESS mode..."
+
+    pytest --base-url=https://www.saucedemo.com --browser chromium \
+    --html=artifacts/report.html \
+    --self-contained-html \
+    --junitxml=artifacts/junit.xml \
+    -v -s --log-cli-level=INFO
+
+else
+    echo "Invalid argument!"
+    echo "Usage:"
+    echo "./run_tests.sh 1  -> Headed mode"
+    echo "./run_tests.sh 2  -> Headless mode"
+    exit 1
+fi
+
