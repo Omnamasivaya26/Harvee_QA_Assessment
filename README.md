@@ -6,6 +6,50 @@ Use Case: Shop and Check Out
 
 Objective: Validate that a registered customer can log in, browse and sort products, manage the shopping cart, complete checkout and place an order successfully.
 
+
+## Setup
+
+Python 3.10+ is recommended.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate       # Linux/macOS
+# .venv\\Scripts\\activate    # Windows
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+playwright install chromium
+```
+
+## Run
+
+```bash
+pytest --browser chromium -v
+```
+
+Generate HTML and JUnit reports:
+
+```bash
+pytest --browser chromium --html=artifacts/report.html --self-contained-html --junitxml=artifacts/junit.xml -v
+```
+
+Run one case by ID:
+
+```bash
+pytest -k TC01
+pytest -k TC16
+```
+
+Run with a visible browser:
+
+```bash
+pytest --browser chromium --headed -v
+```
+
+Execution:
+
+./run_test 1 => To run the test in browser headed mode
+./run_test 2 => To run the test in browser headless mode
+
 ## 1. Questions for the Product Owner and Assumptions
 
 | No. | Question for Product Owner | Assumption to Be Tested |
